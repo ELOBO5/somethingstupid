@@ -32,7 +32,8 @@ router.post("/", async (req, res) => {
       req.body.name,
       req.body.message
     );
-    res.json(post);
+    // res.json(post);
+    res.status(201);
   } catch (err) {
     res.status(404).json({ err });
   }
