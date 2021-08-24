@@ -73,6 +73,8 @@ async function deleteBook(id) {
 
 async function refreshPosts() {
     const data = await getAllPosts();
+    const postContainer = document.querySelector('#posts-container');
+    postContainer.innerHTML = '';
     for (post of data.posts) {
         renderPost(post.title, post.name, post.message);
     }
