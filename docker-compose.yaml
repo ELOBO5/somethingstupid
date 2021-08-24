@@ -22,7 +22,6 @@ services:
   db:
     image: postgres:latest
     volumes:
-      - "dbdata:/var/lib/postgresql/data"
       - "./db:/docker-entrypoint-initdb.d/:ro"
     environment:
       - POSTGRES_DB=postsdb
