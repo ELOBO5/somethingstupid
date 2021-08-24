@@ -21,14 +21,15 @@ class Post {
     });
   }
 
-  static findById(id) {
+  static findByQuery(query) {
     return new Promise(async (resolve, reject) => {
       try {
-        let postData = await db.query(`SELECT * FROM posts WHERE id = $1;`, [
-          id,
-        ]);
-        let post = new Post(postData.rows[0]);
-        resolve(post);
+        let postsData = await db.query(`SELECT * FROM posts 
+                                       WHERE title   ILIKE $1
+                                       OR    name    ILIKE $1
+                                       OR    message ILIKE $1`, ['%' + query + '%']);
+        const posts = postsData.rows.map((d) => new Post(d));
+        resolve(posts);
       } catch (err) {
         reject("Post not found");
       }
