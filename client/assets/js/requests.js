@@ -1,6 +1,6 @@
 document.querySelector('#post-form').addEventListener('submit', (e) => { formSubmitHandler(e) });
 
-async function getAll() {
+async function getAllPosts() {
     try {
         const response = await fetch(`http://localhost:3000/posts`);
         const data = await response.json()
@@ -22,10 +22,13 @@ async function formSubmitHandler(e) {
     }
 }
 
-function renderPostModal(title, name, message) {
+function renderPost(title, name, message) {
+    console.log(`${title}, ${name}, ${message}`);
     const container = `<div class="post-entry"><h1>${title}</h1><h2>${name}</h2><p>${message}</p><div>`;
     const postContainer = document.querySelector('#posts-container');
-    postContainer.appendChild(container);
+
+    // NOTE: Danger here. Sanitise or use something else.
+    postContainer.innerHTML += container;
 }
 
 function renderErrorModal(err) {
@@ -57,3 +60,12 @@ async function deleteBook(id) {
         console.warn(err);
     }
 }
+
+async function refreshPageHandler() {
+    const data = await getAllPosts();
+    for (post of data.posts) {
+        renderPost(post.title, post.name, post.message);
+    }
+}
+
+refreshPageHandler();
