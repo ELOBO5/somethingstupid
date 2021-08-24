@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="scripts/app.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Telegraph</title>
+  </head>
+  <body>
+    <form id="post-form">
+      <label for="title"></label>
+      <input type="text" id="title" placeholder="Title" maxlength="40" />
+
+      <label for="name"></label>
+      <input type="text" id="name" placeholder="Your name" maxlength="20" />
+
+      <label for="message"></label>
+      <textarea
+        type="text"
+        id="message"
+        placeholder="Your story..."
+        maxlength="250"
+      ></textarea>
+
+      <input type="submit" value="Publish" />
+    </form>
+  </body>
+</html>
