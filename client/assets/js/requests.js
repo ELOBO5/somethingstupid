@@ -37,14 +37,24 @@ function renderErrorModal(err) {
 
 async function postNewPost(e) {
     e.preventDefault();
+
     try {
-        const options = {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
+
+        const data = {
+            title: e.target.title.value,
+            name: e.target.name.value,
+            message: e.target.message.value
         }
 
-        const response = await fetch('http://localhost:3000/posts', options);
+        const options = {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(data)
+        }
+
+        await fetch('http://localhost:3000/posts', options);
+
+        refreshPosts();
 
     } catch (err) {
         console.warn(err);
@@ -61,11 +71,11 @@ async function deleteBook(id) {
     }
 }
 
-async function refreshPageHandler() {
+async function refreshPosts() {
     const data = await getAllPosts();
     for (post of data.posts) {
         renderPost(post.title, post.name, post.message);
     }
 }
 
-refreshPageHandler();
+refreshPosts();

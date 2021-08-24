@@ -26,6 +26,7 @@ router.get("/:id", async (req, res) => {
 
 // create post
 router.post("/", async (req, res) => {
+  console.log(req.body);
   try {
     const post = await Post.create(
       req.body.title,
@@ -33,7 +34,7 @@ router.post("/", async (req, res) => {
       req.body.message
     );
     // res.json(post);
-    res.status(201);
+    res.status(201).json(post);
   } catch (err) {
     res.status(404).json({ err });
   }
