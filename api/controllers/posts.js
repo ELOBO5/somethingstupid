@@ -18,7 +18,7 @@ router.get("/:query", async (req, res) => {
   try {
     const posts = await Post.findByQuery(req.params.query);
     console.log(posts);
-    res.status(200).json(posts);
+    res.status(200).json({ posts });
   } catch (err) {
     res.status(404).json({ err });
   }

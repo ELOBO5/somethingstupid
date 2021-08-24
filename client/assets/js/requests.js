@@ -10,6 +10,15 @@ async function getAllPosts() {
     }
 }
 
+async function getPostsMatchingQuery(query) {
+    try {
+        const response = await fetch(`http://localhost:3000/posts/${query}`);
+        const data = await response.json()
+        return data;
+    } catch (err) {
+        console.warn(err);
+    }
+}
 async function formSubmitHandler(e) {
 
     try {
@@ -61,18 +70,10 @@ async function postNewPost(e) {
     }
 }
 
-async function deleteBook(id) {
-    try {
-        const options = { method: 'DELETE' }
-        await fetch(`http://localhost:3000/books/${id}`, options);
-        window.location.hash = `#books`
-    } catch (err) {
-        console.warn(err);
-    }
-}
-
-async function refreshPosts() {
-    const data = await getAllPosts();
+async function refreshPosts(query = '') {
+    let data;
+    if (!query) data = await getAllPosts();
+    else data = await getPostsMatchingQuery(query);
     const postContainer = document.querySelector('#posts-container');
     postContainer.innerHTML = '';
     for (post of data.posts) {
