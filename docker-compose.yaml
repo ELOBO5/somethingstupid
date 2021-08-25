@@ -2,7 +2,7 @@ version: "3"
 services:
   server:
     image: node:14.17.2
-    working_dir: /server
+    working_dir: /api
     ports:
       - 3000:3000
     environment:
@@ -16,7 +16,7 @@ services:
     volumes:
       - type: bind
         source: ./api
-        target: /server
+        target: /api
     command: bash -c "npm install && npm start"
 
   db:
