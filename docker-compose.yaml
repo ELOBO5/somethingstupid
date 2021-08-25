@@ -11,8 +11,7 @@ services:
       - type: bind
         source: ./client
         target: /client
-    command:
-      ['http-server']
+    command: ["http-server"]
 
   server:
     image: node:14.17.2
@@ -36,6 +35,7 @@ services:
   db:
     image: postgres:latest
     volumes:
+      - "dbdata:/var/lib/postgresql/data"
       - "./db:/docker-entrypoint-initdb.d/:ro"
     environment:
       - POSTGRES_DB=postsdb
