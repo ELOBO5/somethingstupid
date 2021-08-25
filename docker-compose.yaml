@@ -1,5 +1,19 @@
 version: "3"
 services:
+  client:
+    container_name: client
+    build: ./client
+    image: somethingclient
+    ports:
+      - 8080:8080
+    working_dir: /client
+    volumes:
+      - type: bind
+        source: ./client
+        target: /client
+    command:
+      ['http-server']
+
   server:
     image: node:14.17.2
     working_dir: /api
