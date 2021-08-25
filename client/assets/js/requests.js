@@ -1,4 +1,9 @@
 document.querySelector('#post-form').addEventListener('submit', (e) => { formSubmitHandler(e) });
+document.querySelector('#search-form').addEventListener('submit', (e) => {
+    e.preventDefault;
+    console.log(`event listener value: ${e.target.query.value}`);
+    refreshPostsWithQuery(e.target.query.value);
+});
 
 async function getAllPosts() {
     try {
@@ -23,7 +28,7 @@ async function formSubmitHandler(e) {
 
     try {
         const resp = await postNewPost(e);
-        const allData = await getAll();
+        const allData = await getAllPosts();
         console.log(allData);
         renderPostModal(allData.title, allData.name, allData.message);
     } catch (err) {
@@ -70,10 +75,22 @@ async function postNewPost(e) {
     }
 }
 
-async function refreshPosts(query = '') {
-    let data;
-    if (!query) data = await getAllPosts();
-    else data = await getPostsMatchingQuery(query);
+// NOTE: shouldn't need this function, instead debug refreshPosts
+async function refreshPostsWithQuery(query) {
+    const data = await getPostsMatchingQuery(query);
+    const postContainer = document.querySelector('#posts-container');
+    postContainer.innerHTML = '';
+    for (post of data.posts) {
+        renderPost(post.title, post.name, post.message);
+    }
+}
+
+async function refreshPosts() {//query = '') {
+    // console.log(query);
+    // let data;
+    // if (!query) { data = await getAllPosts(); console.log('query empty'); }
+    // else { data = await getPostsMatchingQuery(query) }
+    data = await getAllPosts();
     const postContainer = document.querySelector('#posts-container');
     postContainer.innerHTML = '';
     for (post of data.posts) {
