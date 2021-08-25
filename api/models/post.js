@@ -13,7 +13,6 @@ class Post {
       try {
         const postsData = await db.query(`SELECT * FROM posts;`);
         const posts = postsData.rows.map((d) => new Post(d));
-        console.log(posts);
         resolve(posts);
       } catch (err) {
         reject("Error retrieving posts");
