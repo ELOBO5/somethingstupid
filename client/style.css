@@ -1,11 +1,32 @@
 * {
   box-sizing: border-box;
-  color: #686868;
+  /* color: #686868; */
+}
+
+body {
+  width: 100vw;
+  display: inline-grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  margin: 100px;
+  margin-top: 40px;
 }
 
 form {
-  margin-left: 25%;
-  margin-top: 5%;
+  /* margin-left: 25%; */
+  /* margin: 0 auto;
+  margin-top: 5%; */
+  width: 100%;
+}
+
+#post-form {
+  width: 100%;
+  /* display: inline-grid;
+  justify-content: center; */
+  display: block;
 }
 
 #name,
@@ -14,8 +35,8 @@ textarea {
   border: none;
   outline: none;
   resize: none;
-  width: 60%;
   padding: 10px;
+  width: 100%;
 }
 
 #title {
@@ -29,14 +50,49 @@ textarea {
 }
 
 #submit-btn {
+  position: relative;
+  padding: 5px;
   text-transform: uppercase;
   border-radius: 20px;
   font-size: 15px;
-  padding: 5px;
   background-color: white;
   width: 90px;
   cursor: pointer;
   color: black;
   font-weight: bold;
   border-color: black;
+}
+
+#posts-container {
+  width: 100%;
+  /* display: inline-grid; */
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+.post-entry {
+  color: #202020;
+  margin: 40px 40px;
+  border-bottom: #686868 solid 2px;
+}
+
+#query {
+  position: static;
+  top: 40px;
+  /* right: 30vw; */
+}
+
+hr {
+  margin: 40px 0;
+}
+
+/* TODO: Media Query post entry width < width 400px */
+@media only screen and (max-width: 400px) {
+  .post-entry {
+    margin: 0;
+  }
+
+  .column {
+    margin: 0;
+  }
 }
