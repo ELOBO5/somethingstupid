@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script defer src="index.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>Telegraph</title>
+</head>
+
+<body>
+
+  <div class="column">
+
+    <!-- New Post Form -->
+    <form id="post-form">
+      <label for="title"></label>
+      <input type="text" id="title" placeholder="Title" maxlength="40" />
+
+      <label hidden for="name">Name</label>
+      <input type="text" id="name" placeholder="Your name" maxlength="30" required />
+
+      <label hidden for="message">Story</label>
+      <textarea type="text" id="message" placeholder="Your story..." maxlength="400"></textarea>
+
+      <input id="submit-btn" type="submit" value="Publish" />
+    </form>
+
+    <hr />
+
+    <!-- Search Bar -->
+    <form id="search-form">
+      <input type="text" id="query" placeholder="search here" maxlength="30" />
+    </form>
+
+    <!-- Posts Container -->
+    <div id="posts-container"></div>
+
+  </div>
+</body>
+
+</html>

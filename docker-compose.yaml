@@ -1,0 +1,45 @@
+version: "3"
+services:
+  client:
+    container_name: client
+    build: ./client
+    image: somethingclient
+    ports:
+      - 8080:8080
+    working_dir: /client
+    volumes:
+      - type: bind
+        source: ./client
+        target: /client
+    command: ["http-server"]
+
+  server:
+    image: node:14.17.2
+    working_dir: /api
+    ports:
+      - 3000:3000
+    environment:
+      - PGUSER=futureproof
+      - PGHOST=db
+      - PGPASSWORD=postpass
+      - PGDATABASE=postsdb
+      - PGPORT=5432
+    depends_on:
+      - db
+    volumes:
+      - type: bind
+        source: ./api
+        target: /api
+    command: bash -c "npm install && npm start"
+
+  db:
+    image: postgres:latest
+    volumes:
+      - "dbdata:/var/lib/postgresql/data"
+      - "./db:/docker-entrypoint-initdb.d/:ro"
+    environment:
+      - POSTGRES_DB=postsdb
+      - POSTGRES_USER=futureproof
+      - POSTGRES_PASSWORD=postpass
+volumes:
+  dbdata:

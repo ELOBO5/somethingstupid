@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  display: inline-grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  margin: 100px;
+  margin-top: 40px;
+}
+
+form {
+  width: 100%;
+}
+
+#post-form {
+  width: 100%;
+  display: block;
+}
+
+#name,
+#title,
+textarea {
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 10px;
+  width: 100%;
+}
+
+#title {
+  font-size: 30px;
+  color: #404040;
+}
+
+textarea {
+  font-size: 15px;
+  color: #202020;
+}
+
+#submit-btn {
+  position: relative;
+  padding: 5px;
+  text-transform: uppercase;
+  border-radius: 20px;
+  font-size: 15px;
+  background-color: white;
+  width: 90px;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+  border-color: black;
+}
+
+#posts-container {
+  width: 100%;
+}
+
+.post-entry {
+  color: #202020;
+  margin: 40px 40px;
+  border-bottom: #686868 solid 2px;
+}
+
+#query {
+  position: static;
+  top: 40px;
+}
+
+hr {
+  margin: 40px 0;
+}
+
+@media only screen and (max-width: 400px) {
+  .post-entry {
+    margin: 0;
+  }
+
+  .column {
+    margin: 0;
+  }
+}
