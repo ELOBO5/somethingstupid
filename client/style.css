@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  /* color: #686868; */
 }
 
 body {
@@ -16,16 +15,11 @@ body {
 }
 
 form {
-  /* margin-left: 25%; */
-  /* margin: 0 auto;
-  margin-top: 5%; */
   width: 100%;
 }
 
 #post-form {
   width: 100%;
-  /* display: inline-grid;
-  justify-content: center; */
   display: block;
 }
 
@@ -65,9 +59,6 @@ textarea {
 
 #posts-container {
   width: 100%;
-  /* display: inline-grid; */
-  /* align-items: center; */
-  /* justify-content: center; */
 }
 
 .post-entry {
@@ -79,14 +70,12 @@ textarea {
 #query {
   position: static;
   top: 40px;
-  /* right: 30vw; */
 }
 
 hr {
   margin: 40px 0;
 }
 
-/* TODO: Media Query post entry width < width 400px */
 @media only screen and (max-width: 400px) {
   .post-entry {
     margin: 0;

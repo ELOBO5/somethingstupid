@@ -43,7 +43,7 @@ function renderPost(title, name, message) {
     const container = `<div class="post-entry"><h1>${title}</h1><h2>${name}</h2><p>${message}</p><div>`;
     const postContainer = document.querySelector("#posts-container");
 
-    // NOTE: Danger here. Sanitise or use something else.
+    // TODO: Sanitise.
     postContainer.innerHTML += container;
 }
 
