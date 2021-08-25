@@ -1,8 +1,12 @@
+let globalQuery = '';
+
 document.querySelector('#post-form').addEventListener('submit', (e) => { formSubmitHandler(e) });
 document.querySelector('#search-form').addEventListener('submit', (e) => {
-    e.preventDefault;
-    console.log(`event listener value: ${e.target.query.value}`);
-    refreshPostsWithQuery(e.target.query.value);
+    // e.preventDefault;
+    // console.log(`event listener value: ${e.target.query.value}`);
+    // refreshPostsWithQuery(e.target.query.value);
+    globalQuery = e.target.query.value;
+    refreshPosts();
 });
 
 async function getAllPosts() {
@@ -15,9 +19,9 @@ async function getAllPosts() {
     }
 }
 
-async function getPostsMatchingQuery(query) {
+async function getPostsMatchingQuery() {
     try {
-        const response = await fetch(`http://localhost:3000/posts/${query}`);
+        const response = await fetch(`http://localhost:3000/posts/${globalQuery}`);
         const data = await response.json()
         return data;
     } catch (err) {
@@ -87,10 +91,9 @@ async function refreshPostsWithQuery(query) {
 
 async function refreshPosts() {//query = '') {
     // console.log(query);
-    // let data;
-    // if (!query) { data = await getAllPosts(); console.log('query empty'); }
-    // else { data = await getPostsMatchingQuery(query) }
-    data = await getAllPosts();
+    let data;
+    if (!globalQuery) { data = await getAllPosts(); console.log('query empty'); }
+    else { data = await getPostsMatchingQuery() }
     const postContainer = document.querySelector('#posts-container');
     postContainer.innerHTML = '';
     for (post of data.posts) {
