@@ -8,6 +8,7 @@ document.querySelector("#search-form").addEventListener("submit", (e) => {
     e.preventDefault();
     e.stopPropagation();
     refreshPosts(e.target.query.value);
+    document.querySelector("#query").value = '';
 });
 
 async function getAllPosts() {
