@@ -1,4 +1,4 @@
-const url = "https://something-stupid-api.herokuapp.com/";
+const url = "https://something-stupid-api.herokuapp.com";
 
 document.querySelector("#post-form").addEventListener("submit", (e) => {
   formSubmitHandler(e);
