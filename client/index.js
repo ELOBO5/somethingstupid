@@ -70,7 +70,7 @@ async function postNewPost(e) {
       body: JSON.stringify(data),
     };
 
-    await fetch("${url}/posts", options);
+    await fetch(`${url}/posts`, options);
 
     refreshPosts();
   } catch (err) {
