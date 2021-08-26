@@ -42,3 +42,5 @@ Run `bash _scripts/teardown.sh`
 - Users can write a post with a title, name and message
 - Users can view all posts
 - Users can search for anything by entering a query in the search bar
+- Deployed client-side on Vercel: https://somethingstupid.vercel.app/
+- Deployed api and database on Heroku: https://something-stupid-api.herokuapp.com/
