@@ -1,11 +1,11 @@
-# somethingstupid
+# Telegraph
 
 ## Installation & usage
 
 ### Installation
 
 - Clone or download the repo.
-- Open terminal and navigate to somethingstupid folder.
+- Open terminal and navigate to telegraph folder.
 
 ### Usage
 
